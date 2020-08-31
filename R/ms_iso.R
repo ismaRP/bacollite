@@ -59,7 +59,7 @@ ms_iso <- function(sequence,ndeamidations=0,nhydroxylations=0,verbose=F){
     }
 
     if(nhydroxylations>0){
-      max_hyd <- stringr::str_count(sequence,"P")
+      max_hyd <- stringr::str_count(sequence,"[MPWCKH]")
       if(nhydroxylations>max_hyd){
         message(sprintf("ERROR: %d hydroxylations are not possible for sequence %s",
                         nhydroxylations,sequence))
