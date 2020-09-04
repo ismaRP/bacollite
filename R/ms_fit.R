@@ -155,19 +155,23 @@ ms_fit<-function(peptides,sample,doplot=T,force=F,vlevel=0,corlim=0.0,laglim=0.6
         ions[i,3]<- sum( sample$s3$intensity[ (sample$s3$mass > (cd1$mass[1] + align3$lag - 0.5)) &  (sample$s3$mass < (cd1$mass[1] + align3$lag + 4.5)) ]  )/sumions[3]
 
         hitplot=F
-        if(abs(align1$lag) < laglim & align1$cor > corlim)
-        { hitplot=T}
-        if(abs(align2$lag) < laglim & align2$cor > corlim)
-        { hitplot=T}
-        if(abs(align3$lag) < laglim & align3$cor > corlim)
-        { hitplot=T}
+        if(abs(align1$lag) < laglim & align1$cor > corlim){
+          hitplot=T
+          hits[i]<-T
+        }
+        if(abs(align2$lag) < laglim & align2$cor > corlim){
+          hitplot=T
+          hits[i]<-T
+        }
+        if(abs(align3$lag) < laglim & align3$cor > corlim){
+          hitplot=T
+          hits[i]<-T
+        }
 
 
         if(hitplot | force){
 
           plotno = plotno+1
-
-          hits[i]<-T
 
 
           if( doplot ){
